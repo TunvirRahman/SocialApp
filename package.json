@@ -1,5 +1,5 @@
 {
-  "name": "ReactNativeTraining",
+  "name": "AppForTest",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,13 +8,14 @@
   },
   "dependencies": {
     "react": "16.4.1",
-    "react-native": "0.56.0",
-    "react-native-elements": "^0.19.1"
+    "react-native": "0.56.0"
   },
   "devDependencies": {
-    "babel-jest": "23.4.2",
+    "@babel/core": "^7.0.0-beta",
+    "babel-core": "^7.0.0-beta",
+    "babel-jest": "^23.4.2",
     "babel-preset-react-native": "^5",
-    "jest": "23.5.0",
+    "jest": "^23.5.0",
     "react-test-renderer": "16.4.1"
   },
   "jest": {
