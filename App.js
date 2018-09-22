@@ -1,14 +1,29 @@
-'use_strict';
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
-export default class App extends React.Component{
-  constructor(props){
-    super(props);
-  }
-  render(){
-    return(
-      <Text>Hello world</Text>
-    )
+export default class App extends Component{
+  render() {
+    return (
+      <View>
+        <LoginButton
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+              }
+            }
+          }
+          onLogoutFinished={() => console.log("logout.")}/>
+      </View>
+    );
   }
 }
