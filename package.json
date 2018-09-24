@@ -7,11 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "firebase": "^5.5.1",
     "react": "16.4.1",
-    "react-native": "0.56.0",
-    "react-native-button": "^2.3.0",
-    "react-native-fbsdk": "^0.8.0"
+    "react-native": "0.56.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta",
