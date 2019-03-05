@@ -1,4 +1,4 @@
-package com.reactnativetraining;
+package com.socialapp;
 
 import android.app.Application;
 

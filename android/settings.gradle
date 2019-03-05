@@ -1,3 +1,3 @@
-rootProject.name = 'ReactNativeTraining'
+rootProject.name = 'SocialApp'
 
 include ':app'
