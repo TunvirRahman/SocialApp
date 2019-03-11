@@ -3,11 +3,9 @@ import { View, Text,SafeAreaView } from 'react-native';
 import {Button} from "react-native-elements";
 
 export default class LoginScreen extends Component {
+  
   constructor(props) {
     super(props);
-    console.debug(props)
-    this.state = {
-    };
   }
 
   render() {

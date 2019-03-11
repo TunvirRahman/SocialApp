@@ -10,7 +10,7 @@ const AuthFlow = createStackNavigator({
   SignUp:SignUp,
   ForgotPassword:ForgotPassword
 },{
-  
+  headerMode:"none"
 })
 
 export default createAppContainer(AuthFlow)
