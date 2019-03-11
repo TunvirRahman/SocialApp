@@ -1838,7 +1838,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = invariant;
-},3,[],"node_modules/fbjs/lib/invariant.js");
+},3,[],"node_modules/react-native/node_modules/fbjs/lib/invariant.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -2935,7 +2935,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   module.exports = Promise;
-},27,[28,30],"node_modules/fbjs/lib/Promise.native.js");
+},27,[28,30],"node_modules/react-native/node_modules/fbjs/lib/Promise.native.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -6225,7 +6225,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   module.exports = emptyFunction;
-},46,[],"node_modules/fbjs/lib/emptyFunction.js");
+},46,[],"node_modules/react-native/node_modules/fbjs/lib/emptyFunction.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -24154,7 +24154,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = isNode;
-},98,[],"node_modules/fbjs/lib/isNode.js");
+},98,[],"node_modules/react-native/node_modules/fbjs/lib/isNode.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -26897,7 +26897,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = performanceNow;
-},122,[123],"node_modules/fbjs/lib/performanceNow.js");
+},122,[123],"node_modules/react-native/node_modules/fbjs/lib/performanceNow.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -26910,7 +26910,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = performance || {};
-},123,[124],"node_modules/fbjs/lib/performance.js");
+},123,[124],"node_modules/react-native/node_modules/fbjs/lib/performance.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -26923,7 +26923,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     isInWorker: !canUseDOM
   };
   module.exports = ExecutionEnvironment;
-},124,[],"node_modules/fbjs/lib/ExecutionEnvironment.js");
+},124,[],"node_modules/react-native/node_modules/fbjs/lib/ExecutionEnvironment.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -26962,7 +26962,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     }
   } : emptyFunction;
   module.exports = warning;
-},125,[46],"node_modules/fbjs/lib/warning.js");
+},125,[46],"node_modules/react-native/node_modules/fbjs/lib/warning.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -48658,7 +48658,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     }
   };
   module.exports = TouchEventUtils;
-},374,[],"node_modules/fbjs/lib/TouchEventUtils.js");
+},374,[],"node_modules/react-native/node_modules/fbjs/lib/TouchEventUtils.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -48681,7 +48681,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   module.exports = keyMirror;
-},375,[3],"node_modules/fbjs/lib/keyMirror.js");
+},375,[3],"node_modules/react-native/node_modules/fbjs/lib/keyMirror.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -57145,7 +57145,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = emptyObject;
-},424,[],"node_modules/create-react-class/node_modules/fbjs/lib/emptyObject.js");
+},424,[],"node_modules/fbjs/lib/emptyObject.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -57182,7 +57182,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = invariant;
-},425,[],"node_modules/create-react-class/node_modules/fbjs/lib/invariant.js");
+},425,[],"node_modules/fbjs/lib/invariant.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -57230,7 +57230,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   }
 
   module.exports = warning;
-},426,[427],"node_modules/create-react-class/node_modules/fbjs/lib/warning.js");
+},426,[427],"node_modules/fbjs/lib/warning.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   "use strict";
 
@@ -57256,7 +57256,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   module.exports = emptyFunction;
-},427,[],"node_modules/create-react-class/node_modules/fbjs/lib/emptyFunction.js");
+},427,[],"node_modules/fbjs/lib/emptyFunction.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -69687,7 +69687,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   };
 
   module.exports = keyOf;
-},524,[],"node_modules/fbjs/lib/keyOf.js");
+},524,[],"node_modules/react-native/node_modules/fbjs/lib/keyOf.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   'use strict';
 
@@ -88497,17 +88497,29 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     (0, _createClass2.default)(App, [{
       key: "render",
       value: function render() {
-        return _react.default.createElement(_reactNative.View, {
+        return _react.default.createElement(_reactNative.SafeAreaView, {
+          style: {
+            flex: 1
+          },
           __source: {
             fileName: _jsxFileName,
             lineNumber: 13
           }
-        }, _react.default.createElement(_reactNative.Text, {
+        }, _react.default.createElement(_reactNative.View, {
+          style: {
+            flex: 1,
+            backgroundColor: "white"
+          },
           __source: {
             fileName: _jsxFileName,
             lineNumber: 14
           }
-        }, " App "));
+        }, _react.default.createElement(_reactNative.Text, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 15
+          }
+        }, "Sample Text")));
       }
     }]);
     return App;
