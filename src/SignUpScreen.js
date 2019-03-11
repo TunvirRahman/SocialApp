@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,SafeAreaView} from 'react-native';
+import ActionButton from 'react-native-action-button';
 
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   render() {
     return (
-      <View>
-        <Text> SignUpScreen </Text>
-      </View>
+      <SafeAreaView style = {{flex:1}}>
+        <View style = {{flex:1}}>
+        <ActionButton
+          buttonColor="rgba(231,76,60,1)"
+          onPress={() => {
+            this.props.navigation.pop()
+          }}
+        />
+        </View>
+      </SafeAreaView>
     );
   }
 }
