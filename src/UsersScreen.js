@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,SafeAreaView, Button } from 'react-native';
 
 export default class UserScreen extends Component {
   constructor(props) {
@@ -10,9 +10,19 @@ export default class UserScreen extends Component {
 
   render() {
     return (
-      <View>
-        <Text> UserScreen </Text>
+      <SafeAreaView style = {{flex:1}}>
+      <View style = {{flex:1,alignItems:'center'}}>
+        <Button title = "Login" onPress = {()=>{
+          this.props.navigation.push("Login")
+        }}></Button>
+        <Button title = "SignUp" onPress = {()=>{
+          this.props.navigation.push("SignUp")
+        }}></Button>
+        <Button title = "Forget Password" onPress = {()=>{
+          this.props.navigation.push("ForgotPassword")
+        }}></Button>
       </View>
+    </SafeAreaView>
     );
   }
 }
