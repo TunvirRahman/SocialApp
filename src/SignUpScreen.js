@@ -66,7 +66,7 @@ export default class SignUpScreen extends Component {
 
           <View style={styles.forText}>
             <Text style={[styles.signUpText, { justifyContent: 'center', alignSelf: 'flex-start' }]}>Already have an account?</Text>
-            <TouchableOpacity style={{ justifyContent: 'center', alignSelf: 'flex-start' }} onPress={() => this.props.navigation.push("Login")}>
+            <TouchableOpacity style={{ justifyContent: 'center', alignSelf: 'flex-start' }} onPress={() => this.props.navigation.pop()}>
               <Text style={[styles.signUpText, { fontWeight: 'bold', color: "black", }]}
               > Sign in now</Text>
             </TouchableOpacity>
