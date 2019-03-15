@@ -4,17 +4,17 @@ import {createStackNavigator,createDrawerNavigator,createAppContainer} from "rea
 import LoginIn from "./src/loginScreen";
 import SignUp from "./src/SignUpScreen";
 import ForgotPassword from "./src/ForgetPasswordScreen";
-import UsersScreen from './src/UsersScreen';
 
 const AuthFlow = createStackNavigator({
 
+
+  Login:LoginIn,
   ForgotPassword:ForgotPassword,
   SignUp:SignUp,
-  Login:LoginIn,
 
 },{
   headerMode:"none",
-  initialRouteName:'Login'
+  initialRouteName:'SignUp'
 })
 
 export default createAppContainer(AuthFlow)

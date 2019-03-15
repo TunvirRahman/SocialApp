@@ -71,13 +71,6 @@ export default class SignUpScreen extends Component {
               > Sign in now</Text>
             </TouchableOpacity>
           </View>
-
-          <ActionButton
-            buttonColor="rgb(119,136,153)"
-            ///icon={<Icon name="md-cut" style={styles.actionButtonIcon} />}
-            renderIcon={active => (<AntIcon name="back" style={styles.actionButtonIcon} size={25} color="black" />) }>
-          </ActionButton>
-
         </View>
       </SafeAreaView>
     );
@@ -90,10 +83,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   logoPanel: {
-    flex: 2.5,
+    flex: 2,
   },
   form: {
-    flex: 3,
+    flex: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -106,7 +99,7 @@ const styles = StyleSheet.create({
     width: screen.width - 40
   },
   buttonContainer: {
-    flex: .75,
+    flex: .5,
     alignItems: 'stretch',
     justifyContent: 'center',
   },
@@ -123,7 +116,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   forText: {
-    flex: 1,
+    flex: .5,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',

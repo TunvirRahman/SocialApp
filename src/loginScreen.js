@@ -22,54 +22,55 @@ export default class LoginScreen extends Component {
     return (
       <SafeAreaView style={styles.mainview}>
 
-        <View style={styles.mainview}>
-            <View style={styles.logoPanel}>
-              <Logo pageName="UI Kitten" firstHeading="React Native" />
-            </View>
+        <View style={styles.logoPanel}>
+          <Logo pageName="UI Kitten" firstHeading="React Native" />
+        </View>
 
-            <View style={styles.form}>
-              <Form />
-            </View>
+        <View style={styles.form}>
+          <Form></Form>
+        </View>
+        <View style={styles.buttonContainer}>
+          <LinearGradient style={styles.linearGradient}
+            start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+            colors={['#FE9244', '#FF5050']}
+          >
+            <Text style={styles.buttonText} onPress={() => console.log("Hi")}>
+              LOGIN</Text>
+          </LinearGradient>
+        </View>
+        <View style={styles.signUpOptions}>
+          <View style={styles.socialMedia}>
+            <TouchableOpacity style={styles.icons}>
+              <AntIcon.Button name="twitter" size={35} color="black" backgroundColor="transparent" paddingLeft={15} />
+            </TouchableOpacity>
 
-            <View style={styles.buttonContainer}>
-              <LinearGradient style={styles.linearGradient}
-                start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
-                colors={['#FE9244', '#FF5050']}
-              >
-                <Text style={styles.buttonText} onPress={() => console.log("Hi")}>
-                  LOGIN</Text>
-              </LinearGradient>
+            <TouchableOpacity style={styles.icons}>
+              <AntIcon.Button name="google" size={35} color="black" backgroundColor="transparent" paddingLeft={15} />
+            </TouchableOpacity>
 
-            </View>
+            <TouchableOpacity style={styles.icons}>
+              <FontAwsomeIcon.Button name="facebook-f" size={35} color="black" backgroundColor="transparent" paddingLeft={15} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.forText}>
 
-            <View style={styles.signUpOptions}>
-              <View style={styles.socialMedia}>
-                <TouchableOpacity style={styles.icons}>
-                  <AntIcon.Button name="twitter" size={35} color="black" backgroundColor="transparent" paddingLeft={15} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.icons}>
-                  <AntIcon.Button name="google" size={35} color="black" backgroundColor="transparent" paddingLeft={15} />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.icons}>
-                  <FontAwsomeIcon.Button name="facebook-f" size={35} color="black" backgroundColor="transparent" paddingLeft={15} />
-                </TouchableOpacity>
-              </View>
-
-
-              <View style={styles.forText}>
-
-                <Text style={styles.signUpText}>Don't have an account?</Text>
-                <TouchableOpacity onPress={() => this.props.navigation.push("SignUp")}>
-                  <Text style={[styles.signUpText, { fontWeight: 'bold', color: "black" }]}
-                  > Sign up now</Text>
-                </TouchableOpacity>
-              </View>
-
+            <View style={styles.signup}>
+              <TouchableOpacity onPress={() => this.props.navigation.push("SignUp")}>
+                <Text style={[styles.signUpText, { fontWeight: 'bold', color: "black" }]}
+                > Sign up now</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.props.navigation.push("ForgotPassword")} style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={[styles.signUpText, { fontWeight: 'bold', color: "black", }]}
+                > Forget Password?</Text>
+              </TouchableOpacity>
             </View>
 
           </View>
+
+        </View>
+
+
+
       </SafeAreaView>
     );
   }
@@ -77,16 +78,20 @@ export default class LoginScreen extends Component {
 const styles = StyleSheet.create({
   mainview: {
     flex: 1,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    //backgroundColor: 'green'
   },
   logoPanel: {
-    flex: 4,
+    flex: .35,
+    //backgroundColor: 'black'
   },
   form: {
-    flex: 2,
+    flex: .28,
     alignItems: 'center',
     justifyContent: 'center',
+
+    //backgroundColor: 'blue'
   },
   linearGradient: {
     borderRadius: 30,
@@ -97,9 +102,12 @@ const styles = StyleSheet.create({
     width: screen.width - 40
   },
   buttonContainer: {
-    flex: 1.25,
+    flex: .12,
+
     alignItems: 'stretch',
     justifyContent: 'center',
+
+    //backgroundColor: 'red'
   },
   buttonText: {
     fontSize: 18,
@@ -110,8 +118,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   signUpOptions: {
-    flex: 1.65,
-    flexDirection: 'column'
+    flex: .23,
+    flexDirection: 'column',
+
+    //backgroundColor: 'gray'
   },
   socialMedia: {
     flexDirection: 'row',
@@ -133,17 +143,26 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   signUpText: {
-    fontSize: 18,
-    margin: 5,
-    paddingTop: 20,
+    fontSize: 15,
+    marginLeft: screen.width / 8,
+    marginRight: screen.width / 8,
+    paddingTop: 15,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   forText: {
-    flex: .5,
+    flex: .39,
+    justifyContent: 'center',
+    alignItems: "stretch",
+    //backgroundColor: "yellow",
+    flexDirection: "column",
+
+  },
+  signup: {
+    //backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
-    marginRight: screen.width / 5,
-    marginLeft: screen.width / 5
-
+    flexDirection:'column'
+    
   }
 });
