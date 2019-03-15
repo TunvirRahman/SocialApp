@@ -4,7 +4,10 @@ import {createStackNavigator,createDrawerNavigator,createAppContainer} from "rea
 import LoginIn from "./src/loginScreen";
 import SignUp from "./src/SignUpScreen";
 import ForgotPassword from "./src/ForgetPasswordScreen";
-import UsersScreen from './src/UsersScreen';
+
+import HomeScreen from "./src/App Flow/HomeScreen";
+import ProfileScreen from "./src/App Flow/ProfileScreen";
+
 
 const AuthFlow = createStackNavigator({
 
@@ -15,6 +18,11 @@ const AuthFlow = createStackNavigator({
 },{
   headerMode:"none",
   initialRouteName:'Login'
+})
+
+const AppFlow = createDrawerNavigator({
+  Home:HomeScreen,
+  Profile:ProfileScreen,
 })
 
 export default createAppContainer(AuthFlow)
