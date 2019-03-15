@@ -8,13 +8,13 @@ import UsersScreen from './src/UsersScreen';
 
 const AuthFlow = createStackNavigator({
   
+  User: UsersScreen,
   ForgotPassword:ForgotPassword,
   SignUp:SignUp,
   Login:LoginIn,
 
 },{
-  headerMode:"none",
-  initialRouteName:"Login"
+  headerMode:"none"
 })
 
 export default createAppContainer(AuthFlow)
