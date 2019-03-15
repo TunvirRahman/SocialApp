@@ -21,7 +21,7 @@ const AuthFlow = createStackNavigator({
 
 },{
   headerMode:"none",
-  initialRouteName:'SignUp'
+  initialRouteName:'Login'
 })
 
 const AppFlow = createDrawerNavigator({
