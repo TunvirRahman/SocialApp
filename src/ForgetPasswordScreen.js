@@ -48,7 +48,7 @@ export default class ForgetPassword extends Component {
             </LinearGradient>
           </View>
 
-          <TouchableOpacity onPress={() => this.props.navigation.push("Login")} style={styles.gotoLogin}>
+          <TouchableOpacity onPress={() => this.props.navigation.pop()} style={styles.gotoLogin}>
             <Text style={{fontWeight: 'bold', color: "black",fontSize:18 }}
             > Sign In</Text>
           </TouchableOpacity>
