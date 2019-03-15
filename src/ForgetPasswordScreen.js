@@ -34,7 +34,7 @@ export default class ForgetPassword extends Component {
                 autoCorrect={false}
               />
 
-              <Text style={{ justifyContent: 'center', alignSelf: 'center' }}>Enter your email below to receive your password reset instructions</Text>
+              <Text style={{ justifyContent: 'center', alignSelf: 'center', width: screen.width - 47 }}>Enter your email below to receive your password reset instructions</Text>
             </KeyboardAvoidingView>
           </View>
 
@@ -47,6 +47,12 @@ export default class ForgetPassword extends Component {
                 SIGN UP</Text>
             </LinearGradient>
           </View>
+
+          <TouchableOpacity onPress={() => this.props.navigation.push("Login")} style={styles.gotoLogin}>
+            <Text style={{fontWeight: 'bold', color: "black",fontSize:18 }}
+            > Sign In</Text>
+          </TouchableOpacity>
+
 
         </View>
       </SafeAreaView>
@@ -61,7 +67,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
-
+  gotoLogin:{
+    justifyContent:'center',
+    alignSelf:'center',
+    marginBottom:5
+  },
   logoPanel: {
     flex: 3,
   },
@@ -84,7 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 15,
     fontFamily: 'Gill Sans',
     textAlign: 'center',
     margin: 10,

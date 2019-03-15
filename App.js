@@ -5,19 +5,23 @@ import LoginIn from "./src/loginScreen";
 import SignUp from "./src/SignUpScreen";
 import ForgotPassword from "./src/ForgetPasswordScreen";
 
+
 import HomeScreen from "./src/App Flow/HomeScreen";
 import ProfileScreen from "./src/App Flow/ProfileScreen";
 
 
+
+
 const AuthFlow = createStackNavigator({
 
+
+  Login:LoginIn,
   ForgotPassword:ForgotPassword,
   SignUp:SignUp,
-  Login:LoginIn,
 
 },{
   headerMode:"none",
-  initialRouteName:'Login'
+  initialRouteName:'SignUp'
 })
 
 const AppFlow = createDrawerNavigator({
