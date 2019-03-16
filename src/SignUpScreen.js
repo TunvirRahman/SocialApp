@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView,
 import LinearGradient from 'react-native-linear-gradient';
 import ActionButton from 'react-native-action-button';
 import Logo from './Logo';
+import FirebaseService from "./Service and Data/FirebaseService";
 
 import UserInput from './UserInput';
 import AntIcon from 'react-native-vector-icons/AntDesign'
@@ -59,7 +60,12 @@ export default class SignUpScreen extends Component {
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
               colors={['#FE9244', '#FF5050']}
             >
-              <Text style={styles.buttonText} onPress={() => console.log("Hi")}>
+              <Text style={styles.buttonText} onPress={() => {
+
+                let service = new FirebaseService()
+                service.createNewUser({name:"XXX"})
+
+              }}>
                 SIGN UP</Text>
             </LinearGradient>
           </View>
