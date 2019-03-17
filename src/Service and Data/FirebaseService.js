@@ -24,7 +24,7 @@ export default class FirebaseService{
     loginAndUserInfo = (email,password)=>{
         return new Promise((resolve,reject)=>{
             this.loadAllUser().then(res=>{
-                console.log(res.data[0])
+                console.log(res.data)
             }).catch(err=>{
                 reject(err)
             })

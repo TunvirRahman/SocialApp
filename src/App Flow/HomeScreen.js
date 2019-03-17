@@ -10,19 +10,14 @@ export default class componentName extends Component {
   }
 
   componentDidMount(){
-    
-    Axios.get("https://social-4a626.firebaseio.com/user.json").then(res=>{
-      console.log(res)
-    }).catch(err=>{
-      console.log(err)
-    })
+
   }
 
   render() {
     return (
       <SafeAreaView style = {{flex:1,backgroundColor:'white'}}>
-        <View style= {{flex:1,backgroundColor:'white'}}>
-            <Text>Home Screen</Text>
+        <View style= {{flex:1,backgroundColor:'gray',alignItems:'center'}}>
+            <Text>List of people with data will load here</Text>
         </View>
       </SafeAreaView>
     );

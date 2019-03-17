@@ -11,8 +11,8 @@ export default class componentName extends Component {
   render() {
     return (
       <SafeAreaView style = {{flex:1,backgroundColor:'white'}}>
-        <View style = {{flex:1,backgroundColor:'white'}}>
-            <Text>Profile Component</Text>
+        <View style = {{flex:1,backgroundColor:'gray',alignItems:'center'}}>
+            <Text>Current user profile will load here</Text>
         </View>
       </SafeAreaView>
     );
