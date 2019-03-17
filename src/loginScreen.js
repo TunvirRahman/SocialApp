@@ -8,6 +8,8 @@ import Form from './Form';
 import AntIcon from 'react-native-vector-icons/AntDesign'
 import FontAwsomeIcon from 'react-native-vector-icons/FontAwesome'
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import FirebaseService from "./Service and Data/FirebaseService";
+
 
 const screen = Dimensions.get("window")
 
@@ -34,7 +36,10 @@ export default class LoginScreen extends Component {
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
             colors={['#FE9244', '#FF5050']}
           >
-            <Text style={styles.buttonText} onPress={() => console.log("Hi")}>
+            <Text style={styles.buttonText} onPress={() => {
+              let service = new FirebaseService()
+              service.loginAndUserInfo("tunvir_rahman@yahoo.com"," ")
+            }}>
               LOGIN</Text>
           </LinearGradient>
         </View>
