@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView, TouchableOpacity, FlatList, ListView } from 'react-native';
-import { } from 'react-native-elements'
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity, FlatList } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import ActionButton from 'react-native-action-button';
 import Logo from './Logo';
 import FirebaseService from "./Service and Data/FirebaseService";
 
 import UserInput from './UserInput';
-import AntIcon from 'react-native-vector-icons/AntDesign'
 
 const screen = Dimensions.get("window")
 
@@ -16,6 +13,16 @@ const screen = Dimensions.get("window")
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      firstName:'',
+      lastName:'',
+      CurrentCountry:'',
+      CountryOfResidence:'',
+      Email:'',
+      PhoneNumber:'',
+      Password:'',
+      confirmPassword:''
+    }
   }
 
   renderHeader = () => {
@@ -24,6 +31,19 @@ export default class SignUpScreen extends Component {
         <Logo pageName="Registration" />
       </View>
     )
+  }
+  onTextChange = (text,index) =>{
+    switch(index){
+      case 0: this.setState({firstName:text})
+      case 1: this.setState({lastName:text})
+      case 2: this.setState({Email:text})
+      case 3: this.setState({CurrentCountry:text})
+      case 4: this.setState({CountryOfResidence:text})
+      case 5: this.setState({PhoneNumber:text})
+      case 6: this.setState({Password:text})
+      case 7: this.setState({confirmPassword:text})
+      
+    }
   }
 
   renderFooter = () => {
@@ -38,6 +58,8 @@ export default class SignUpScreen extends Component {
             let service = new FirebaseService()
             service.createNewUser({ name: "x" })
 
+            let object = this.state //this is the obsject of all inputs
+            console.log(object)
           }}>
             SIGN UP</Text>
         </LinearGradient>
@@ -91,13 +113,14 @@ export default class SignUpScreen extends Component {
               },
               { key: 'Confirm Password', secureText: true },
             ]}
-            renderItem={({ item }) =>
+            renderItem={({ item,index }) =>
               <UserInput
                 placeholder={item.key}
                 autoCapitalize={'none'}
                 returnKeyType={'done'}
                 autoCorrect={false}
                 secureTextEntry={item.secureText}
+                onChangeText={(text)=> this.onTextChange(text,index)}
               />}
           >
           </FlatList>
