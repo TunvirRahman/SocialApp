@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView, TouchableOpacity, FlatList, ListView } from 'react-native';
+import { } from 'react-native-elements'
 import LinearGradient from 'react-native-linear-gradient';
 import ActionButton from 'react-native-action-button';
 import Logo from './Logo';
@@ -10,73 +11,96 @@ import AntIcon from 'react-native-vector-icons/AntDesign'
 
 const screen = Dimensions.get("window")
 
+
+
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
   }
 
+  renderHeader = () => {
+    return (
+      <View style={styles.logoPanel}>
+        <Logo pageName="Registration" />
+      </View>
+    )
+  }
+
+  renderFooter = () => {
+    return (
+      <View>
+        <LinearGradient style={styles.linearGradient}
+          start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+          colors={['#FE9244', '#FF5050']}
+        >
+          <Text style={styles.buttonText} onPress={() => {
+
+            let service = new FirebaseService()
+            service.createNewUser({ name: "x" })
+
+          }}>
+            SIGN UP</Text>
+        </LinearGradient>
+
+        <View style={styles.forText}>
+          <Text style={[styles.signUpText, { justifyContent: 'center', alignSelf: 'flex-start' }]}>Already have an account?</Text>
+          <TouchableOpacity style={{ justifyContent: 'center', alignSelf: 'flex-start' }} onPress={() => this.props.navigation.pop()}>
+            <Text style={[styles.signUpText, { fontWeight: 'bold', color: "black", }]}
+            > Sign in now</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    )
+  }
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.mainview} >
-
-          <View style={styles.logoPanel}>
-            <Logo pageName="Registration" />
-          </View>
-
-          <View style={styles.form}>
-            <KeyboardAvoidingView behavior="padding" style={styles.userInputContainer}>
+        <View style={styles.form}>
+          <FlatList
+            ListFooterComponent={this.renderFooter}
+            ListHeaderComponent={this.renderHeader}
+            data={[
+              {
+                key: 'First Name',
+                secureText: false
+              },
+              {
+                key: 'Last Name',
+                secureText: false
+              },
+              {
+                key: 'Email Address',
+                secureText: false
+              },
+              {
+                key: 'Current Country',
+                secureText: false
+              },
+              {
+                key: 'Country of residence',
+                secureText: false
+              },
+              {
+                key: 'Cell Phone No',
+                secureText: false
+              },
+              {
+                key: 'Password',
+                secureText: true
+              },
+              { key: 'Confirm Password', secureText: true },
+            ]}
+            renderItem={({ item }) =>
               <UserInput
-                placeholder="Name"
+                placeholder={item.key}
                 autoCapitalize={'none'}
                 returnKeyType={'done'}
                 autoCorrect={false}
-              />
-              <UserInput
-                placeholder="Email"
-                autoCapitalize={'none'}
-                returnKeyType={'done'}
-                autoCorrect={false}
-              />
-              <UserInput
-                secureTextEntry={true}
-                placeholder="Password"
-                returnKeyType={'done'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-              />
-              <UserInput
-                secureTextEntry={true}
-                placeholder="Confirm Password"
-                returnKeyType={'done'}
-                autoCapitalize={'none'}
-                autoCorrect={false}
-              />
-            </KeyboardAvoidingView>
-          </View>
-
-          <View style={styles.buttonContainer}>
-            <LinearGradient style={styles.linearGradient}
-              start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
-              colors={['#FE9244', '#FF5050']}
-            >
-              <Text style={styles.buttonText} onPress={() => {
-
-                let service = new FirebaseService()
-                service.createNewUser({name:"x"})
-
-              }}>
-                SIGN UP</Text>
-            </LinearGradient>
-          </View>
-
-          <View style={styles.forText}>
-            <Text style={[styles.signUpText, { justifyContent: 'center', alignSelf: 'flex-start' }]}>Already have an account?</Text>
-            <TouchableOpacity style={{ justifyContent: 'center', alignSelf: 'flex-start' }} onPress={() => this.props.navigation.pop()}>
-              <Text style={[styles.signUpText, { fontWeight: 'bold', color: "black", }]}
-              > Sign in now</Text>
-            </TouchableOpacity>
-          </View>
+                secureTextEntry={item.secureText}
+              />}
+          >
+          </FlatList>
         </View>
       </SafeAreaView>
     );
@@ -89,18 +113,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   logoPanel: {
-    flex: 2,
+    flex: 1,
   },
   form: {
-    flex: 4,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   linearGradient: {
-    borderRadius: 30,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 70,
+    height: 60,
     margin: 17,
     width: screen.width - 40
   },
@@ -130,9 +154,5 @@ const styles = StyleSheet.create({
     marginLeft: screen.width / 5,
     marginBottom: 15,
   },
-  userInputContainer: {
-    flex: 1,
-    alignItems: 'center',
-
-  },
 });
+

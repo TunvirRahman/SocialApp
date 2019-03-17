@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: 'white',
     width: DEVICE_WIDTH - 40,
-    height: 60,
+    height: 50,
     marginHorizontal: 20,
     paddingLeft: 23,
-    borderRadius: 30,
+    borderRadius: 25,
     borderColor:"lightgray",
     borderWidth: 1,
     fontSize: 20,
