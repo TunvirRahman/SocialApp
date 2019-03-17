@@ -63,7 +63,7 @@ export default class SignUpScreen extends Component {
               <Text style={styles.buttonText} onPress={() => {
 
                 let service = new FirebaseService()
-                service.createNewUser({name:"XXX"})
+                service.createNewUser({name:"x"})
 
               }}>
                 SIGN UP</Text>
