@@ -8,21 +8,19 @@ import UserInput from './UserInput';
 
 const screen = Dimensions.get("window")
 
-
-
+var SignUpObject = {
+  firstName: '',
+  lastName: '',
+  CurrentCountry: '',
+  CountryOfResidence: '',
+  Email: '',
+  PhoneNumber: '',
+  Password: '',
+  confirmPassword: ''
+}
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      firstName:'',
-      lastName:'',
-      CurrentCountry:'',
-      CountryOfResidence:'',
-      Email:'',
-      PhoneNumber:'',
-      Password:'',
-      confirmPassword:''
-    }
   }
 
   renderHeader = () => {
@@ -32,17 +30,17 @@ export default class SignUpScreen extends Component {
       </View>
     )
   }
-  onTextChange = (text,index) =>{
-    switch(index){
-      case 0: this.setState({firstName:text})
-      case 1: this.setState({lastName:text})
-      case 2: this.setState({Email:text})
-      case 3: this.setState({CurrentCountry:text})
-      case 4: this.setState({CountryOfResidence:text})
-      case 5: this.setState({PhoneNumber:text})
-      case 6: this.setState({Password:text})
-      case 7: this.setState({confirmPassword:text})
-      
+  onTextChange = (text, index) => {
+    switch (index) {
+      case 0: return SignUpObject.firstName = text;
+      case 1: return SignUpObject.lastName = text
+      case 2: return SignUpObject.Email = text
+      case 3: return SignUpObject.CurrentCountry = text
+      case 4: return SignUpObject.CountryOfResidence = text
+      case 5: return SignUpObject.PhoneNumber = text
+      case 6: return SignUpObject.Password = text
+      case 7: return SignUpObject.confirmPassword = text
+
     }
   }
 
@@ -58,8 +56,8 @@ export default class SignUpScreen extends Component {
             let service = new FirebaseService()
             service.createNewUser({ name: "x" })
 
-            let object = this.state //this is the obsject of all inputs
-            console.log(object)
+            //this is the obsject of all inputs
+            console.log(SignUpObject)
           }}>
             SIGN UP</Text>
         </LinearGradient>
@@ -113,14 +111,14 @@ export default class SignUpScreen extends Component {
               },
               { key: 'Confirm Password', secureText: true },
             ]}
-            renderItem={({ item,index }) =>
+            renderItem={({ item, index }) =>
               <UserInput
                 placeholder={item.key}
                 autoCapitalize={'none'}
                 returnKeyType={'done'}
                 autoCorrect={false}
                 secureTextEntry={item.secureText}
-                onChangeText={(text)=> this.onTextChange(text,index)}
+                onChangeText={(text) => this.onTextChange(text, index)}
               />}
           >
           </FlatList>
