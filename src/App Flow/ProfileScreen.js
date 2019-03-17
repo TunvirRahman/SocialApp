@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { SafeAreaView,View, Text } from 'react-native';
-import AntDesignICON from "react-native-vector-icons/AntDesign";
-import Hamburger from 'react-native-hamburger';
+import { SafeAreaView,View, Text,TouchableOpacity} from 'react-native';
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
+
+const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
+
+
 
 export default class ProfileScreen extends Component {
   
@@ -18,9 +21,9 @@ export default class ProfileScreen extends Component {
         <View style = {{flex:1,backgroundColor:'white'}}>
           <View style = {{flex:0.08,justifyContent:'center',alignItems:'center',flexDirection:'row',backgroundColor:'transparent'}}>
             <Text style = {{flex:0.8,fontSize:20,textAlign:'center',fontWeight: 'bold'}}>Profile</Text>
-            <Hamburger active={false} type ='spinArrow' onPress = {()=>{
-              this.props.navigation.toggleDrawer();
-            }}></Hamburger>
+            <TouchableOpacity onPress = {()=>this.props.navigation.toggleDrawer()}>
+              {hamburgerIcon}
+            </TouchableOpacity>
           </View>
 
       {/* Nav Title and HamburgerMenu */}

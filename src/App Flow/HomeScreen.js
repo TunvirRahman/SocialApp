@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { SafeAreaView,View, Text } from 'react-native';
+import { SafeAreaView,View, Text,TouchableOpacity} from 'react-native';
 import Axios from "axios";
-import Hamburger from 'react-native-hamburger';
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 
+const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -17,9 +18,9 @@ export default class HomeScreen extends Component {
 
           <View style = {{flex:0.08,justifyContent:'center',alignItems:'center',flexDirection:'row',backgroundColor:'transparent'}}>
             <Text style = {{flex:0.8,fontSize:20,textAlign:'center',fontWeight: 'bold'}}>Home</Text>
-            <Hamburger active={false} type ='spinArrow' onPress = {()=>{
-              this.props.navigation.toggleDrawer();
-            }}></Hamburger>
+            <TouchableOpacity onPress = {()=>this.props.navigation.toggleDrawer()}>
+              {hamburgerIcon}
+            </TouchableOpacity>
           </View>
 
       {/* Nav Title and HamburgerMenu */}
