@@ -14,7 +14,14 @@ export default class FirebaseService{
     loadAllUser = ()=>{
         return new Promise((resolve,reject)=>{
             Axios.get(baseURL).then(res=>{
-                resolve(res)
+                let users = []
+                Object.keys(res.data).map(item=>{
+                    const user = res.data[item]
+                    if(user.Email){
+                        users.push(user)
+                    }
+                })
+                resolve(users)
             }).catch(err=>{
                 reject(err)
             })
@@ -23,8 +30,13 @@ export default class FirebaseService{
     
     loginAndUserInfo = (email,password)=>{
         return new Promise((resolve,reject)=>{
-            this.loadAllUser().then(res=>{
-                console.log(res.data)
+            this.loadAllUser().then(users=>{
+                users.map(user=>{
+                    if(user.Email && user.Email === email && user.password === password){
+                        resolve(user)
+                    }
+                })
+                resolve([])
             }).catch(err=>{
                 reject(err)
             })
