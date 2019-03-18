@@ -29,4 +29,4 @@ const AppFlow = createDrawerNavigator({
   Profile:ProfileScreen,
 })
 
-export default createAppContainer(AuthFlow)
+export default createAppContainer(AppFlow)

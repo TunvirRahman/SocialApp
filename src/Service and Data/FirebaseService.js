@@ -28,6 +28,22 @@ export default class FirebaseService{
         })
     }
     
+    loadUserFromCountry = (countryOfOrigin)=>{
+        return new Promise((resolve,reject)=>{
+            this.loadAllUser().then(res=>{
+                let users = []
+                res.map(user=>{
+                    if(user.ResidenceCountry.toUpperCase() === countryOfOrigin.toUpperCase()){
+                        users.push(user)
+                    }
+                })
+                resolve(users)
+            }).catch(err=>{
+                reject(err)
+            })
+        })
+    }
+
     loginAndUserInfo = (email,password)=>{
         return new Promise((resolve,reject)=>{
             this.loadAllUser().then(users=>{
