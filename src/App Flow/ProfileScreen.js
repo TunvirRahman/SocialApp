@@ -4,12 +4,22 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 
 const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
 
-
+const currentUser = {
+  Email: "Sundor@gmail.com",
+  FirstName: "Sundor",
+  JobTitle: "CEO",
+  LastName: "Pichai",
+  password: " ",
+  PhoneNo: "0973223234",
+  ProfileImage: "https://randomuser.me/api/portraits/men/3.jpg",
+  ResidenceCountry: "India"
+}
 
 export default class ProfileScreen extends Component {
   
   constructor(props) {
     super(props);
+    console.log(currentUser)
   }
 
   render() {
