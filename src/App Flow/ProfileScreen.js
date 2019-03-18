@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { SafeAreaView,View, Text,TouchableOpacity} from 'react-native';
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
+import ActionButton from "react-native-action-button";
+import Octicons from "react-native-vector-icons/Octicons";
+
+const logout = <Octicons name="sign-out" size = {45} color = "blue"></Octicons>
 
 const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
 
@@ -41,7 +45,13 @@ export default class ProfileScreen extends Component {
       {/* This is main Container */}
           
           <View style = {{flex:0.92,backgroundColor:'gray'}}>
-             
+            <ActionButton
+              buttonColor="transparent"
+              renderIcon = {()=>logout}
+              onPress={() => {
+                this.props.navigation.pop()
+              }}
+            />
           </View>
 
       {/* This is main Container */}
