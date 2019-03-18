@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { SafeAreaView,View, Text,TouchableOpacity} from 'react-native';
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 import ActionButton from "react-native-action-button";
-import Octicons from "react-native-vector-icons/Octicons";
+import Feather from "react-native-vector-icons/Feather";
 
-const logout = <Octicons name="sign-out" size = {45} color = "blue"></Octicons>
+const logout = <Feather name="log-out" size = {30} color = "blue"></Feather>
 
 const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
 
