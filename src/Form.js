@@ -10,10 +10,25 @@ import {
 } from 'react-native';
 
 import UserInput from './UserInput';
-
 export default class Form extends Component {
   constructor(props) {
     super(props);
+
+    this.state={
+      email:'',
+      password:'',
+    }
+
+    //give data to the previous class
+    this.getEmail = this.getEmail.bind(this);
+    this.getPassword = this.getPassword.bind(this);
+  }
+    
+  getEmail=()=>{
+    return this.state.email
+  }
+  getPassword(){
+    return this.state.password
   }
 
   render() {
@@ -24,6 +39,7 @@ export default class Form extends Component {
           autoCapitalize={'none'}
           returnKeyType={'done'}
           autoCorrect={false}
+          onChangeText={(text)=>this.setState({email:text})}
         />
         <UserInput
           secureTextEntry={true}
@@ -31,6 +47,7 @@ export default class Form extends Component {
           returnKeyType={'done'}
           autoCapitalize={'none'}
           autoCorrect={false}
+          onChangeText={(text)=>this.setState({password:text})}
         />
       </View>
     );

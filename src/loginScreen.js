@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView,ActivityIndicator,AsyncStorage,Alert} from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView, ActivityIndicator, AsyncStorage, Alert } from 'react-native';
 import { Button } from "react-native-elements";
 import LinearGradient from 'react-native-linear-gradient';
 import { black } from 'ansi-colors';
@@ -18,10 +18,24 @@ export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
     console.log(props)
-    this.state ={
-      isLoading:false
+    this.state = {
+      isLoading: false,
     }
   }
+
+  //for calling the email and password
+  _onItemPressed(item) {
+    console.log(this._form.getEmail);
+    this.setState({ isLoading: true })
+    let service = new FirebaseService()
+    service.loginAndUserInfo("tunvir_rahman@yahoo.com", " ").then(res => {
+      this.setState({ isLoading: false })
+      this.props.navigation.push("AppFlow")
+    }).catch(err => {
+      Alert.alert("Can't login", "Please try again Later")
+    })
+  }
+
 
   render() {
     return (
@@ -32,24 +46,15 @@ export default class LoginScreen extends Component {
         </View>
 
         <View style={styles.form}>
-          <Form></Form>
+          <Form ref={ref => (this._form = ref)}></Form>
         </View>
         <View style={styles.buttonContainer}>
-          {this.state.isLoading? <ActivityIndicator size = 'large' color = "blue"></ActivityIndicator>:null}
+          {this.state.isLoading ? <ActivityIndicator size='large' color="blue"></ActivityIndicator> : null}
           <LinearGradient style={styles.linearGradient}
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
             colors={['#FE9244', '#FF5050']}
           >
-            <Text style={styles.buttonText} onPress={() => {
-              this.setState({isLoading:true})
-              let service = new FirebaseService()
-              service.loginAndUserInfo("tunvir_rahman@yahoo.com"," ").then(res=>{
-                this.setState({isLoading:false})
-                this.props.navigation.push("AppFlow")
-              }).catch(err=>{
-                Alert.alert("Can't login","Please try again Later")
-              })
-            }}>
+            <Text style={styles.buttonText} onPress={this._onItemPressed.bind(this)}>
               LOGIN</Text>
           </LinearGradient>
         </View>
@@ -83,9 +88,6 @@ export default class LoginScreen extends Component {
           </View>
 
         </View>
-
-
-
       </SafeAreaView>
     );
   }
@@ -98,11 +100,11 @@ const styles = StyleSheet.create({
     //backgroundColor: 'green'
   },
   logoPanel: {
-    flex: .35,
+    flex: .3,
     //backgroundColor: 'black'
   },
   form: {
-    flex: .28,
+    flex: .3,
     alignItems: 'center',
     justifyContent: 'center',
 
@@ -177,7 +179,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection:'column'
-    
+    flexDirection: 'column'
+
   }
 });
