@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity, FlatList,Alert,ActivityIndicator } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Logo from './Logo';
 import FirebaseService from "./Service and Data/FirebaseService";
@@ -18,9 +18,25 @@ var SignUpObject = {
   Password: '',
   confirmPassword: ''
 }
+
+let newUserInfo = {
+  "CurrentCountry" : "Bangladesh",
+  "Email" : "jackChan@yahoo.com",
+  "FirstName" : "Jack",
+  "JobTitle" : "Engineer",
+  "LastName" : "Sparrow",
+  "PhoneNo" : "01912386832",
+  "ProfileImage" : "https://randomuser.me/api/portraits/men/1.jpg",
+  "ResidenceCountry" : "USA",
+  "password" : " "
+}
+
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading:false
+    }
   }
 
   renderHeader = () => {
@@ -47,17 +63,20 @@ export default class SignUpScreen extends Component {
   renderFooter = () => {
     return (
       <View>
+        {this.state.isLoading? <ActivityIndicator size = 'large' color='blue'></ActivityIndicator>:null}
         <LinearGradient style={styles.linearGradient}
           start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
           colors={['#FE9244', '#FF5050']}
         >
           <Text style={styles.buttonText} onPress={() => {
-
+            this.setState({isLoading:true})
             let service = new FirebaseService()
-            service.createNewUser({ name: "x" })
-
-            //this is the obsject of all inputs
-            console.log(SignUpObject)
+            service.createNewUser(newUserInfo).then(res=>{
+              this.setState({isLoading:false})
+              this.props.navigation.pop()
+            }).catch(err=>{
+              Alert.alert("Operation Failed",err)
+            })
           }}>
             SIGN UP</Text>
         </LinearGradient>

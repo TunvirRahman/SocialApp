@@ -1,14 +1,27 @@
 import Axios from "axios";
+
 const baseURL = "https://social-4a626.firebaseio.com/user.json"
 
 
 export default class FirebaseService{
 
     createNewUser = (user)=>{
-        Axios.post(baseURL,{user}).then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
+
+        return new Promise((resolve,reject)=>{
+            let allUsers = this.loadAllUser().then(users=>{
+                users.map(regUser=>{
+                    if(regUser.Email === user.Email){
+                        reject("User Already Exist")
+                    }
+                })
+            }).catch(err=>{
+                reject(err)
+            })
+            Axios.post(baseURL,user).then(res=>{
+                resolve(res)
+            }).catch(err=>{
+                reject(err)
+            })
         })
     }
     loadAllUser = ()=>{

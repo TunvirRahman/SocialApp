@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { SafeAreaView,View, Text,TouchableOpacity,ActivityIndicator} from 'react-native';
+import { SafeAreaView,View, Text,TouchableOpacity,ActivityIndicator,FlatList} from 'react-native';
 import Axios from "axios";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 import FirebaseService from "./../Service and Data/FirebaseService";
+import {SearchBar} from "react-native-elements";
+import UserCell from "./UserCell";
 
 const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
 
@@ -43,9 +45,10 @@ export default class HomeScreen extends Component {
 
       {/* MainContents Goes here */}
       
-        <View style= {{flex:0.92,backgroundColor:'gray',alignItems:'center'}}>
-            {this.state.isLoading? <ActivityIndicator color = "blue" size = 'large'></ActivityIndicator>:<Text>List of people with data will load here</Text>}
-            
+        <View style= {{flex:0.92,backgroundColor:'white'}}>
+            {this.state.isLoading? <ActivityIndicator color = "blue" size = 'large'></ActivityIndicator>:null}
+            <SearchBar style = {{height:20,backgroundColor:'transparent'}} placeholder = "Search People here" inputStyle = {{backgroundColor:'transparent'}} containerStyle = {{backgroundColor:'transparent'}} sear></SearchBar>
+            <FlatList data = {this.state.allUsers} renderItem = {({item})=><UserCell user= {item}></UserCell>} keyExtractor = {(item,index)=>item.Email}></FlatList>
         </View>
 
       {/* MainContents Goes here */}
