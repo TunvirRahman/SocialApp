@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { SafeAreaView,View, Text,TouchableOpacity} from 'react-native';
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
+import ActionButton from "react-native-action-button";
+import Feather from "react-native-vector-icons/Feather";
+
+const logout = <Feather name="log-out" size = {30} color = "blue"></Feather>
 
 const hamburgerIcon = <FontAwesomeIcon name = "bars" size = {30} color = "blue"></FontAwesomeIcon>
 
-
+const currentUser = {
+  Email: "Sundor@gmail.com",
+  FirstName: "Sundor",
+  JobTitle: "CEO",
+  LastName: "Pichai",
+  password: " ",
+  PhoneNo: "0973223234",
+  ProfileImage: "https://randomuser.me/api/portraits/men/3.jpg",
+  ResidenceCountry: "India"
+}
 
 export default class ProfileScreen extends Component {
   
   constructor(props) {
     super(props);
+    console.log(currentUser)
   }
 
   render() {
@@ -31,7 +45,13 @@ export default class ProfileScreen extends Component {
       {/* This is main Container */}
           
           <View style = {{flex:0.92,backgroundColor:'gray'}}>
-             
+            <ActionButton
+              buttonColor="transparent"
+              renderIcon = {()=>logout}
+              onPress={() => {
+                this.props.navigation.pop()
+              }}
+            />
           </View>
 
       {/* This is main Container */}

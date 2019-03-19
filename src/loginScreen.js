@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView,ActivityIndicator,AsyncStorage,Alert} from 'react-native';
 import { Button } from "react-native-elements";
 import LinearGradient from 'react-native-linear-gradient';
 import { black } from 'ansi-colors';
@@ -17,7 +17,10 @@ export default class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
-
+    console.log(props)
+    this.state ={
+      isLoading:false
+    }
   }
 
   render() {
@@ -32,13 +35,20 @@ export default class LoginScreen extends Component {
           <Form></Form>
         </View>
         <View style={styles.buttonContainer}>
+          {this.state.isLoading? <ActivityIndicator size = 'large' color = "blue"></ActivityIndicator>:null}
           <LinearGradient style={styles.linearGradient}
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
             colors={['#FE9244', '#FF5050']}
           >
             <Text style={styles.buttonText} onPress={() => {
+              this.setState({isLoading:true})
               let service = new FirebaseService()
-              service.loginAndUserInfo("tunvir_rahman@yahoo.com"," ")
+              service.loginAndUserInfo("tunvir_rahman@yahoo.com"," ").then(res=>{
+                this.setState({isLoading:false})
+                this.props.navigation.push("AppFlow")
+              }).catch(err=>{
+                Alert.alert("Can't login","Please try again Later")
+              })
             }}>
               LOGIN</Text>
           </LinearGradient>

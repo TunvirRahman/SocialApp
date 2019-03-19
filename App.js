@@ -13,8 +13,6 @@ import ProfileScreen from "./src/App Flow/ProfileScreen";
 
 
 const AuthFlow = createStackNavigator({
-
-
   Login:LoginIn,
   ForgotPassword:ForgotPassword,
   SignUp:SignUp,
@@ -29,4 +27,12 @@ const AppFlow = createDrawerNavigator({
   Profile:ProfileScreen,
 })
 
-export default createAppContainer(AuthFlow)
+const App = createStackNavigator({
+  AuthFlow:AuthFlow,
+  AppFlow:AppFlow
+},{
+  headerMode:"none",
+  initialRouteName:'AuthFlow'
+})
+
+export default createAppContainer(App)
