@@ -8,7 +8,6 @@ import ForgotPassword from "./src/ForgetPasswordScreen";
 
 import HomeScreen from "./src/App Flow/HomeScreen";
 import ProfileScreen from "./src/App Flow/ProfileScreen";
-import UserDemoDetails from './src/App Flow/UserDemoDetails';
 
 
 

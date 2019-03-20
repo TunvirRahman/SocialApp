@@ -16,7 +16,8 @@ var SignUpObject = {
   Email: '',
   PhoneNumber: '',
   Password: '',
-  confirmPassword: ''
+  confirmPassword: '',
+  JobTitle:''
 }
 
 let newUserInfo = {
@@ -38,14 +39,6 @@ export default class SignUpScreen extends Component {
 
       isLoading: false,
       
-      firstName: '',
-      lastName: '',
-      CurrentCountry: '',
-      CountryOfResidence: '',
-      Email: '',
-      PhoneNumber: '',
-      Password: '',
-      confirmPassword: ''
     }
   }
 
@@ -58,40 +51,32 @@ export default class SignUpScreen extends Component {
   }
   onTextChange = (text, index) => {
     switch (index) {
-      case 0: return SignUpObject.firstName = text;
-      case 1: return SignUpObject.lastName = text
-      case 2: return SignUpObject.Email = text
-      case 3: return SignUpObject.CurrentCountry = text
-      case 4: return SignUpObject.CountryOfResidence = text
-      case 5: return SignUpObject.PhoneNumber = text
-      case 6: return SignUpObject.Password = text
-      case 7: return SignUpObject.confirmPassword = text
+      case 0: return newUserInfo.FirstName = text;
+      case 1: return newUserInfo.LastName = text
+      case 2: return newUserInfo.Email = text
+      case 3: return newUserInfo.CurrentCountry = text
+      case 4: return newUserInfo.ResidenceCountry = text
+      case 5: return newUserInfo.JobTitle = text
+      case 5: return newUserInfo.PhoneNo = text
+      case 6: return newUserInfo.password = text
+      case 8: return SignUpObject.confirmPassword = text
 
     }
   }
 
-  onSignUpButtonPressed = () =>{
-    this.setState({
-      firstName: newUserInfo.FirstName,
-      lastName: newUserInfo.LastName,
-      CurrentCountry: newUserInfo.CurrentCountry,
-      CountryOfResidence: newUserInfo.CountryOfResidence,
-      Email: newUserInfo.Email,
-      PhoneNumber: newUserInfo.PhoneNumber,
-      Password: newUserInfo.password,
-      confirmPassword: newUserInfo.password
-    })
-  }
+
+
   renderFooter = () => {
     return (
-      <View>
+      <View style={{flex:1,justifyContent:'center',alignItems:'stretch'}}>
         {this.state.isLoading ? <ActivityIndicator size='large' color='blue'></ActivityIndicator> : null}
         <LinearGradient style={styles.linearGradient}
           start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
           colors={['#FE9244', '#FF5050']}
         >
           <Text style={styles.buttonText} onPress={() => {
-            this.onSignUpButtonPressed
+            
+            //
             this.setState({ isLoading: true })
             let service = new FirebaseService()
             service.createNewUser(newUserInfo).then(res => {
@@ -117,7 +102,7 @@ export default class SignUpScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1,justifyContent:'center',alignItems:'stretch' }}>
         <View style={styles.form}>
           <FlatList
             ListFooterComponent={this.renderFooter}
@@ -144,6 +129,10 @@ export default class SignUpScreen extends Component {
                 secureText: false
               },
               {
+                key: 'Job Title',
+                secureText: false
+              },
+              {
                 key: 'Cell Phone No',
                 secureText: false
               },
@@ -160,7 +149,7 @@ export default class SignUpScreen extends Component {
                 returnKeyType={'done'}
                 autoCorrect={false}
                 secureTextEntry={item.secureText}
-                onTextChange={(text)=>this.onTextChange(text,index)}
+                onChangeText={(text)=>this.onTextChange(text,index)}
               />}
           >
           </FlatList>
@@ -177,6 +166,7 @@ const styles = StyleSheet.create({
   },
   logoPanel: {
     flex: 1,
+    paddingTop:25
   },
   form: {
     flex: 1,

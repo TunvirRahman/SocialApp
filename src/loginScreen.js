@@ -43,7 +43,7 @@ export default class LoginScreen extends Component {
       <SafeAreaView style={styles.mainview}>
 
         <View style={styles.logoPanel}>
-          <Logo pageName="UI Kitten" firstHeading="React Native" />
+          <Logo pageName="Social" />
         </View>
 
         <View style={styles.form}>

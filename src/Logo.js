@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 
-import logoImg from './Images/logo.png';
+import logoImg from './Images/Social.jpg';
 
 export default class Logo extends Component {
   constructor(props){
@@ -11,7 +11,6 @@ export default class Logo extends Component {
     return (
       <View style={styles.container}>
         <Image  style={styles.image} source={logoImg} />
-        {(this.props.firstHeading)?<Text style={[styles.text, {color: 'gray', fontWeight:'100', fontSize: 30}]}>{this.props.firstHeading}</Text>:<Text></Text>}
         {(this.props.pageName)?<Text style={[styles.text, {color: 'black', fontWeight:'bold' , fontSize: 40,}]}>{this.props.pageName}</Text>:<Text></Text>}
       </View>
     );
