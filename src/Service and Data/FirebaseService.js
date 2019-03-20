@@ -10,7 +10,7 @@ export default class FirebaseService{
         return new Promise((resolve,reject)=>{
             let allUsers = this.loadAllUser().then(users=>{
                 users.map(regUser=>{
-                    if(regUser.Email === user.Email){
+                    if(regUser.Email.toUpperCase() === user.Email.toUpperCase()){
                         reject("User Already Exist")
                     }
                 })
