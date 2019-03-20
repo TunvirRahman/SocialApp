@@ -31,12 +31,17 @@ export default class LoginScreen extends Component {
 
   //for calling the email and password
   _onItemPressed(item) {
-    console.log(this._form.getEmail);
+
     this.setState({ isLoading: true })
     let service = new FirebaseService()
-    service.loginAndUserInfo("tunvir_rahman@yahoo.com", " ").then(res => {
+    service.loginAndUserInfo(this.loginCredentials.login,this.loginCredentials.password).then(res => {
+      if(res.length !== 0){
+        this.props.navigation.push("AppFlow")
+        AsyncStorage.setItem("CurrentUser",res)
+      }else{
+        Alert.alert("Can't login", "You must register before login!")
+      } 
       this.setState({ isLoading: false })
-      this.props.navigation.push("AppFlow")
     }).catch(err => {
       Alert.alert("Can't login", "Please try again Later")
     })
@@ -53,7 +58,7 @@ export default class LoginScreen extends Component {
 
         <View style={styles.form}>
           <Form ref={ref => (this._form = ref)} onChange = {(credential)=>{
-            credential.login? loginCredentials = {login:credential.login} : loginCredentials = {password:credential.password}
+            credential.login? this.loginCredentials = {...this.loginCredentials,login:credential.login,} : this.loginCredentials =  {...this.loginCredentials,password:credential.password}
           }}></Form>
         </View>
         <View style={styles.buttonContainer}>
