@@ -63,6 +63,7 @@ export default class HomeScreen extends Component {
                     <UserCell item={item} index={index}/>
                   )
                 }}
+                onPress = {()=>{}}
                 keyExtractor={(item, index) => item.Email}
                 ItemSeparatorComponent = {this.separator}>
               </FlatList>

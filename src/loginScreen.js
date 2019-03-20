@@ -15,6 +15,12 @@ const screen = Dimensions.get("window")
 
 export default class LoginScreen extends Component {
 
+
+  loginCredentials = {
+    login:'',
+    password:''
+  }
+
   constructor(props) {
     super(props);
     console.log(props)
@@ -46,7 +52,9 @@ export default class LoginScreen extends Component {
         </View>
 
         <View style={styles.form}>
-          <Form ref={ref => (this._form = ref)}></Form>
+          <Form ref={ref => (this._form = ref)} onChange = {(credential)=>{
+            credential.login? loginCredentials = {login:credential.login} : loginCredentials = {password:credential.password}
+          }}></Form>
         </View>
         <View style={styles.buttonContainer}>
           {this.state.isLoading ? <ActivityIndicator size='large' color="blue"></ActivityIndicator> : null}
