@@ -57,8 +57,8 @@ export default class SignUpScreen extends Component {
       case 3: return newUserInfo.CurrentCountry = text
       case 4: return newUserInfo.ResidenceCountry = text
       case 5: return newUserInfo.JobTitle = text
-      case 5: return newUserInfo.PhoneNo = text
-      case 6: return newUserInfo.password = text
+      case 6: return newUserInfo.PhoneNo = text
+      case 7: return newUserInfo.password = text
       case 8: return SignUpObject.confirmPassword = text
 
     }
@@ -68,7 +68,7 @@ export default class SignUpScreen extends Component {
 
   renderFooter = () => {
     return (
-      <View style={{flex:1,justifyContent:'center',alignItems:'stretch'}}>
+      <View>
         {this.state.isLoading ? <ActivityIndicator size='large' color='blue'></ActivityIndicator> : null}
         <LinearGradient style={styles.linearGradient}
           start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
@@ -102,7 +102,7 @@ export default class SignUpScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1,justifyContent:'center',alignItems:'stretch' }}>
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.form}>
           <FlatList
             ListFooterComponent={this.renderFooter}
@@ -166,7 +166,6 @@ const styles = StyleSheet.create({
   },
   logoPanel: {
     flex: 1,
-    paddingTop:25
   },
   form: {
     flex: 1,
