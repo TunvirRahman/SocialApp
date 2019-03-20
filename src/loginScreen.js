@@ -35,8 +35,11 @@ export default class LoginScreen extends Component {
     let service = new FirebaseService()
     service.loginAndUserInfo(this.loginCredentials.login,this.loginCredentials.password).then(res => {
       if(res.length !== 0){
-        this.props.navigation.push("AppFlow")
-        AsyncStorage.setItem("CurrentUser",res)
+        AsyncStorage.setItem('@CurrentUser:key', JSON.stringify(res)).then(res=>{
+          this.props.navigation.push("AppFlow")
+        }).catch(err=>{
+          console.log(err)
+        })
       }else{
         Alert.alert("Can't login", "You must register before login!")
       } 

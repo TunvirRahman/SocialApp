@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, ActivityIndicator, FlatList } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, ActivityIndicator, FlatList,AsyncStorage } from 'react-native';
 import Axios from "axios";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 import FirebaseService from "./../Service and Data/FirebaseService";
@@ -21,11 +21,17 @@ export default class HomeScreen extends Component {
 
   componentDidMount() {
     let service = new FirebaseService()
-    service.loadUserFromCountry("india").then(users => {
-      this.setState({
-        allUsers: users,
-        isLoading: false
+    AsyncStorage.getItem("@CurrentUser:key").then(res=>{
+      let currentUser = JSON.parse(res)
+      service.loadUserFromCountry(currentUser.ResidenceCountry).then(users => {
+        this.setState({
+          allUsers: users,
+          isLoading: false
+        })
       })
+      this.setState({isLoading:false})
+    }).catch(err=>{
+      this.setState({isLoading:false})
     })
   }
   separator = () =>{
