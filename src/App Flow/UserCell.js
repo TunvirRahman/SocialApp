@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableWithoutFeedback, Image } from 'react-native';
-import UserDemoDetails from './UserDemoDetails';
 import { ListItem } from 'react-native-elements'
 
 export default class UserCell extends Component {
@@ -21,7 +20,6 @@ export default class UserCell extends Component {
           style={{ height: 70, width: 70, borderRadius: 35, justifyContent: 'center', alignSelf: 'center', paddingLeft: 10 }}
           source={{ uri: this.props.item.ProfileImage }}
         />}
-        onPress={()=> this.props.navigation.push("UserDemoDetails")}
       />
     );
   }
