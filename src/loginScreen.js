@@ -15,6 +15,7 @@ const screen = Dimensions.get("window")
 
 export default class LoginScreen extends Component {
 
+  //
   constructor(props) {
     super(props);
     console.log(props)
