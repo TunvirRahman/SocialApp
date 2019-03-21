@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, ActivityIndicator, FlatList,AsyncStorage } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, ActivityIndicator, FlatList,AsyncStorage,Alert } from 'react-native';
 import Axios from "axios";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 import FirebaseService from "./../Service and Data/FirebaseService";
@@ -20,20 +20,38 @@ export default class HomeScreen extends Component {
 
 
   componentDidMount() {
+    // let service = new FirebaseService()
+    // AsyncStorage.getItem("@CurrentUser:key").then(res=>{
+    //   let currentUser = JSON.parse(res)
+    //   service.loadUserFromCountry(currentUser.ResidenceCountry).then(users => {
+    //     this.setState({
+    //       allUsers: users,
+    //       isLoading: false
+    //     })
+    //   })
+    //   this.setState({isLoading:false})
+    // }).catch(err=>{
+    //   this.setState({isLoading:false})
+    // })
+  }
+
+  loadUsers=(country)=>{
     let service = new FirebaseService()
-    AsyncStorage.getItem("@CurrentUser:key").then(res=>{
-      let currentUser = JSON.parse(res)
-      service.loadUserFromCountry(currentUser.ResidenceCountry).then(users => {
-        this.setState({
-          allUsers: users,
-          isLoading: false
-        })
+    service.loadUserFromCountry(country).then(users => {
+      this.setState({
+              allUsers: users,
+              isLoading: false
       })
-      this.setState({isLoading:false})
-    }).catch(err=>{
-      this.setState({isLoading:false})
     })
   }
+
+  componentDidMount =async () => {
+    const user = await AsyncStorage.getItem("@CurrentUser:key")
+    let country = JSON.parse(user).ResidenceCountry
+    this.loadUsers(country)
+  }
+
+
   separator = () =>{
     return(
       <View style={{borderColor:'lightgray',borderWidth:.5,marginLeft:15,marginRight:15}}>
