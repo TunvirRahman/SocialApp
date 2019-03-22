@@ -180,7 +180,7 @@ export default class ProfileScreen extends Component {
             />
 
             <ActionButton
-              buttonColor="#26A365"
+              buttonColor="antiquewhite"
               renderIcon={() => logout}
               onPress={() => {
                 this.props.navigation.pop()
