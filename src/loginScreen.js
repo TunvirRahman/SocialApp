@@ -28,7 +28,6 @@ export default class LoginScreen extends Component {
     }
   }
 
-  //for calling the email and password
   _onItemPressed(item) {
 
     this.setState({ isLoading: true })
@@ -88,7 +87,7 @@ export default class LoginScreen extends Component {
           </View>
             <View style={styles.signup}>
               <TouchableOpacity style = {{flexDirection:'column'}} onPress={() => this.props.navigation.push("SignUp")}>
-                <Text style={{textAlign:'center'}}>Already have an account?</Text>
+                <Text style={{textAlign:'center'}}>Do not have an account?</Text>
                 <Text style={{ fontWeight: 'bold', color: "black",textAlign:'center'}}
                 > Sign up now</Text>
               </TouchableOpacity>

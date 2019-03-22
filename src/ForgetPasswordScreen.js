@@ -3,10 +3,8 @@ import { View, Text, SafeAreaView, StyleSheet, Dimensions, KeyboardAvoidingView,
 import Logo from './Logo';
 import LinearGradient from 'react-native-linear-gradient';
 import ActionButton from 'react-native-action-button';
-
 import UserInput from './UserInput';
-import AntIcon from 'react-native-vector-icons/AntDesign'
-const screen = Dimensions.get("window")
+import AntIcon from 'react-native-vector-icons/AntDesign';
 
 
 export default class ForgetPassword extends Component {
@@ -16,94 +14,43 @@ export default class ForgetPassword extends Component {
     };
   }
 
-  render() {
-    return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.mainview} >
-
-          <View style={styles.logoPanel}>
-            <Logo pageName="Password Recovery" />
+  render(){
+    return(
+      <SafeAreaView style = {{flex:1,backgroundColor:'transparent'}}>
+        <View style = {{flex:1,backgroundColor:'transparent',flexDirection:'column',justifyContent:'space-around'}}>
+          <View style = {{flex:0.3,backgroundColor:'transparent',alignItems:'stretch'}}>
+            <Logo></Logo>
           </View>
-
-          <View style={styles.form}>
-            <KeyboardAvoidingView behavior="height" style={styles.userInputContainer}>
-              <UserInput
-                placeholder="Email"
-                autoCapitalize={'none'}
-                returnKeyType={'done'}
-                autoCorrect={false}
-              />
-
-              <Text style={{ justifyContent: 'center', alignSelf: 'center', width: screen.width - 47 }}>Enter your email below to receive your password reset instructions</Text>
-            </KeyboardAvoidingView>
-          </View>
-
-          <View style={styles.buttonContainer}>
-            <LinearGradient style={styles.linearGradient}
+          <View style = {{flex:0.4,backgroundColor:'transparent',justifyContent:'center'}}>
+            <UserInput
+              placeholder="Email"
+              autoCapitalize={'none'}
+              returnKeyType={'done'}
+              autoCorrect={false}
+            />
+            <LinearGradient style={{height:60,marginLeft:20,marginRight:20,borderRadius:20,marginTop:20}}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
               colors={['#FE9244', '#FF5050']}
             >
-              <Text style={styles.buttonText} onPress={() => console.log("Hi")}>
-                SIGN UP</Text>
+            <TouchableOpacity style = {{flex:1,backgroundColor:'transparent',justifyContent:'center',alignItems:"center"}} onPress = {()=>{
+                  this.props.navigation.pop()
+            }}>
+              <Text style = {{fontSize:15,fontWeight:'bold'}}>Recover Password</Text>
+            </TouchableOpacity>
             </LinearGradient>
           </View>
-
-          <TouchableOpacity onPress={() => this.props.navigation.pop()} style={styles.gotoLogin}>
-            <Text style={{fontWeight: 'bold', color: "black",fontSize:18 }}
-            > Sign In</Text>
-          </TouchableOpacity>
-
-
+          <View style={{ flex: 0.2, backgroundColor: 'transparent',justifyContent:'center'}}>
+            <TouchableOpacity style={{ flexDirection: 'column' }} onPress={() => this.props.navigation.pop()}>
+              <Text style={{ textAlign: 'center' }}>Already have an account?</Text>
+              <Text style={{ fontWeight: 'bold', color: "black", textAlign: 'center' }}
+              > Sign in now</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
-    );
+    )
   }
+
 }
 
 
-const styles = StyleSheet.create({
-  mainview: {
-    flex: 1,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  gotoLogin:{
-    justifyContent:'center',
-    alignSelf:'center',
-    marginBottom:5
-  },
-  logoPanel: {
-    flex: 3,
-  },
-  form: {
-    flex: 4,
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  linearGradient: {
-    borderRadius: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 70,
-    margin: 17,
-    width: screen.width - 40
-  },
-  buttonContainer: {
-    flex: 1.5,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontSize: 15,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
-  },
-  userInputContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-});
