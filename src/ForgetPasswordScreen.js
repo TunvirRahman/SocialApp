@@ -39,9 +39,9 @@ export default class ForgetPassword extends Component {
             </TouchableOpacity>
             </LinearGradient>
           </View>
-          <View style={{ flex: 0.2, backgroundColor: 'transparent',justifyContent:'center'}}>
+          <View style={{ flex: 0.2, backgroundColor: 'transparent',justifyContent:'flex-end'}}>
             <TouchableOpacity style={{ flexDirection: 'column' }} onPress={() => this.props.navigation.pop()}>
-              <Text style={{ textAlign: 'center' }}>Already have an account?</Text>
+              <Text style={{ textAlign: 'center' }}>Have account credentials?</Text>
               <Text style={{ fontWeight: 'bold', color: "black", textAlign: 'center' }}
               > Sign in now</Text>
             </TouchableOpacity>

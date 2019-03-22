@@ -33,6 +33,7 @@ export default class LoginScreen extends Component {
     this.setState({ isLoading: true })
     let service = new FirebaseService()
     service.loginAndUserInfo(this.loginCredentials.login,this.loginCredentials.password).then(res => {
+      this.setState({ isLoading: false })
       if(res.length !== 0){
         AsyncStorage.setItem('@CurrentUser:key', JSON.stringify(res)).then(res=>{
           this.props.navigation.push("AppFlow")
@@ -42,8 +43,9 @@ export default class LoginScreen extends Component {
       }else{
         Alert.alert("Can't login", "You must register before login!")
       } 
-      this.setState({ isLoading: false })
+      
     }).catch(err => {
+      this.setState({ isLoading: false })
       Alert.alert("Can't login", "Please try again Later")
     })
   }
@@ -61,13 +63,11 @@ export default class LoginScreen extends Component {
           <Form ref={ref => (this._form = ref)} onChange = {(credential)=>{
             credential.login? this.loginCredentials = {...this.loginCredentials,login:credential.login,} : this.loginCredentials =  {...this.loginCredentials,password:credential.password}
           }}></Form>
-          {this.state.isLoading ? <ActivityIndicator size='large' color="blue"></ActivityIndicator> : null}
           <LinearGradient style={styles.linearGradient}
             start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
             colors={['#FE9244', '#FF5050']}
           >
-            <Text style={styles.buttonText} onPress={this._onItemPressed.bind(this)}>
-              LOGIN</Text>
+          {this.state.isLoading ? <ActivityIndicator size='large' color="blue"></ActivityIndicator> : <Text style={styles.buttonText} onPress={this._onItemPressed.bind(this)}> LOGIN</Text>}
           </LinearGradient>
         </View>
         <View style={styles.signUpOptions}>
