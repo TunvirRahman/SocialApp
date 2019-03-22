@@ -4,6 +4,7 @@ import Logo from "./../Logo";
 import LinearGradient from 'react-native-linear-gradient';
 import { black } from 'ansi-colors';
 import { Button } from "react-native-elements";
+import UserInfo from "./UserInfoCredentials";
 
 export default class SignUpComponent extends Component {
   constructor(props) {
@@ -23,8 +24,8 @@ export default class SignUpComponent extends Component {
         <View style = {{flex:0.2,alignItems:'center',justifyContent:'center',backgroundColor:'transparent'}}>
             <Logo></Logo>
         </View>
-        <View style = {{flex:0.5,flexDirection:'column',justifyContent:'center',backgroundColor:'transparent'}}>
-            {/* Slide MEnu */}
+        <View style = {{flex:0.5,flexDirection:'column',backgroundColor:'lightgray'}}>
+            <UserInfo></UserInfo>
         </View>
         <TouchableOpacity style = {{flex:0.1,marginLeft:20,marginRight:20,backgroundColor:'transparent'}} onPress = {this.handleSignUp}>
           <LinearGradient style={{flex:1,borderRadius:20}}
