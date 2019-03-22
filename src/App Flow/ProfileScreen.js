@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, Dimensions, SectionList, Image, TextInput } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, Dimensions, SectionList, Image, TextInputComponent,AsyncStorage,TextInput } from 'react-native';
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
 import LinearGradient from 'react-native-linear-gradient';
 import ActionButton from "react-native-action-button";
@@ -12,16 +12,6 @@ const screen = Dimensions.get("window")
 
 const hamburgerIcon = <FontAwesomeIcon name="bars" size={30} color="blue"></FontAwesomeIcon>
 
-const currentUser = {
-  Email: "Sundor@gmail.com",
-  FirstName: "Sundor",
-  JobTitle: "CEO",
-  LastName: "Pichai",
-  password: " ",
-  PhoneNo: "+0973223234",
-  ProfileImage: "https://randomuser.me/api/portraits/men/3.jpg",
-  ResidenceCountry: "India"
-}
 const profileItemsAndProperties = [
   {
     title: 'INFO',
@@ -68,15 +58,16 @@ const profileItemsAndProperties = [
 class SectionListItems extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props.currentUser)
   }
 
   getItemName = (index,property) => {
     switch (index) {
-      case 0: return (property)?"****":currentUser.FirstName
-      case 1: return (property)?"****":currentUser.LastName
-      case 2: return (property)?"****":currentUser.ResidenceCountry
-      case 3: return currentUser.JobTitle
-      case 4: return currentUser.PhoneNo
+      case 0: return (property)?"****":this.props.currentUser.FirstName
+      case 1: return (property)?"****":this.props.currentUser.LastName
+      case 2: return (property)?"****":this.props.currentUser.ResidenceCountry
+      case 3: return this.props.currentUser.JobTitle
+      case 4: return this.props.currentUser.PhoneNo
     }
   }
 
@@ -85,8 +76,9 @@ class SectionListItems extends React.Component {
       <View style={{ flex: 1, backgroundColor: 'transparent', flexDirection: 'row', margin: 15, justifyContent: 'space-between', alignItems: 'center', height: 60 }}>
         <Text style={{ flex: .3, fontSize: 20, paddingLeft: 7, color: 'gray', backgroundColor: 'transparent', justifyContent: 'center', alignItems: 'flex-start', direction: 'ltr' }}>{this.props.item.itemName}</Text>
         <TextInput
-          style={{ flex: .5, fontSize: 25,  color: 'black', borderColor: 'lightgray', alignItems: 'center', justifyContent: 'center', width: 150, fontWeight: 'bold', fontFamily: 'sans-serif-thin', paddingLeft: 5, paddingRight: 5 }}
+          style={{ flex: .5, fontSize: 25,  color: 'black', borderColor: 'lightgray', alignItems: 'center', justifyContent: 'center', width: 150, fontWeight: 'bold', fontFamily: 'Helvetica', paddingLeft: 5, paddingRight: 5 }}
           placeholder={this.getItemName(this.props.index,this.props.item.secure)}
+          editable = {false}
           secureTextEntry={this.props.item.secure}
           autoCorrect={false}
           autoCapitalize={'none'}
@@ -100,10 +92,28 @@ class SectionListItems extends React.Component {
 }
 export default class ProfileScreen extends Component {
 
+  
+
   constructor(props) {
     super(props);
-    console.log(currentUser)
+    this.state = {
+      currentUser:{
+        Email: "",
+        FirstName: "",
+        JobTitle: "",
+        LastName: "",
+        password: "",
+        PhoneNo: "",
+        ResidenceCountry: ""
+      }
+    }
   }
+
+  componentDidMount = async ()=>{
+    const user = await AsyncStorage.getItem("@CurrentUser:key")
+    this.setState({currentUser:JSON.parse(user)})
+  }
+
   renderHeaderComponent = () => {
     return (
 
@@ -156,14 +166,14 @@ export default class ProfileScreen extends Component {
           <View style={{ flex: 0.92, backgroundColor: 'transparent' }}>
             <SectionList
               ListHeaderComponent={this.renderHeaderComponent}
-              ListFooterComponent={this.renderFooterComponent}
+              //ListFooterComponent={this.renderFooterComponent}
               ItemSeparatorComponent={this.separator}
               renderSectionHeader={({ section }) => <Text style={{ backgroundColor: 'transparent', fontSize: 20, padding: 0, color: '#FF5050', fontWeight: '200', margin: 15 }}> {section.title} </Text>}
 
               sections={profileItemsAndProperties}
               renderItem={({ item, index }) => {
                 return (
-                  <SectionListItems item={item} index={index} />
+                  <SectionListItems item={item} index={index} currentUser = {this.state.currentUser}/>
                 )
               }}
               keyExtractor={(item, index) => index}
