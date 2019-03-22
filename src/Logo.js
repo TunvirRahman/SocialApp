@@ -11,7 +11,6 @@ export default class Logo extends Component {
     return (
       <View style={styles.container}>
         <Image  style={styles.image} source={logoImg} />
-        {(this.props.pageName)?<Text style={[styles.text, {color: 'black', fontWeight:'bold' , fontSize: 40,}]}>{this.props.pageName}</Text>:<Text></Text>}
       </View>
     );
   }
@@ -20,6 +19,7 @@ export default class Logo extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },

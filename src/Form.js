@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 
 import {
   StyleSheet,
-  KeyboardAvoidingView,
   TouchableOpacity,
-  View,
-  ScrollView,
-  Dimensions
+  View
 } from 'react-native';
 
 import UserInput from './UserInput';
@@ -19,14 +16,14 @@ export default class Form extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <UserInput
+        <UserInput style = {{flex:0.4}}
           placeholder="Username"
           autoCapitalize={'none'}
           returnKeyType={'done'}
           autoCorrect={false}
           onChangeText={(text)=>this.props.onChange({login:text})}
         />
-        <UserInput
+        <UserInput style = {{flex:0.4}}
           secureTextEntry={true}
           placeholder="Password"
           returnKeyType={'done'}
@@ -39,12 +36,10 @@ export default class Form extends Component {
   }
 }
 
-const DEVICE_WIDTH = Dimensions.get('window').width;
-const DEVICE_HEIGHT = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
   },
 });
