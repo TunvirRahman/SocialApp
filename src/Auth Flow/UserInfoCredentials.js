@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,FlatList } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import Input from "./../UserInput";
 import { Button } from 'react-native-elements';
@@ -48,17 +48,18 @@ export default class UserInfoCredentials extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentEntry:"loginCredentials",
+      title:"Next"
     };
   }
 
   render() {
     return (
-      <View style = {{flex:1,backgroundColor:'transparent',justifyContent:'center',flexDirection:'column'}}>
-        {Object.keys(inputs.loginCredentials).map(key=>{
-            return (
-              <Input key = {key} secureTextEntry = {inputs.loginCredentials[key].secureText} placeholder = {inputs.loginCredentials[key].placeholder}></Input>
-            )
-        })}
+      <View style = {{flex:1,backgroundColor:'transparent',justifyContent:'flex-start',flexDirection:'column'}}>
+        <FlatList style ={{flex:0.1,backgroundColor:'gray'}} data = {Object.keys(inputs[this.state.currentEntry])} keyExtractor = {(item,index)=>item} renderItem = {({item})=>{
+          return <Input placeholder = {inputs[this.state.currentEntry][item].placeholder}></Input>
+        }}></FlatList>
+        <Button >{this.state.title}</Button>
       </View>
     );
   }

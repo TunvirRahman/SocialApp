@@ -25,13 +25,12 @@ export default class UserInput extends Component {
   }
 }
 
-const DEVICE_WIDTH = Dimensions.get('window').width;
-const DEVICE_HEIGHT = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   input: {
+    marginLeft: 20,
+    marginRight: 20,
     backgroundColor: 'white',
-    width: DEVICE_WIDTH - 40,
     height: 50,
     marginHorizontal: 20,
     paddingLeft: 23,
