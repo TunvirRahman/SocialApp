@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { black } from 'ansi-colors';
 import { Button } from "react-native-elements";
 import UserInfo from "./UserInfoCredentials";
+import DropdownAlert from 'react-native-dropdownalert';
 
 export default class SignUpComponent extends Component {
   constructor(props) {
