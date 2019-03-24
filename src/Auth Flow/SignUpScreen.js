@@ -17,11 +17,13 @@ export default class SignUpComponent extends Component {
 
   handleSignUp = ()=>{
     console.log("Sign UP")
+    this.something.alertWithType('success',"Great!!","Just awesome")
   }
 
   render() {
     return (
       <SafeAreaView style = {{flex:1,flexDirection:'column',justifyContent:'space-between'}}>
+        <DropdownAlert ref = {ref=>this.something = ref}></DropdownAlert>
         <View style = {{flex:0.2,alignItems:'center',justifyContent:'center',backgroundColor:'transparent'}}>
             <Logo></Logo>
         </View>
