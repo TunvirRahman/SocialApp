@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text,StyleSheet } from 'react-native';
+import GradientButton from "./Custom Components/GradientButton";
 
 export default class App extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <View style = {styles.rootView}>
-        <Text>Hello World</Text>
+        <GradientButton title = "LOGIN"></GradientButton>
       </View>
     );
   }
