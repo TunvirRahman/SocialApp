@@ -10,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <View style = {styles.rootView}>
-        <GradientButton title = "LOGIN"></GradientButton>
+        <GradientButton title = "LOGIN" colors ={['#FE9244', '#FF5050']}  onPress = {()=>console.log("Ok")}></GradientButton>
       </View>
     );
   }
@@ -20,8 +20,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   rootView:{
     flex:1,
-    backgroundColor:'transparent',
-    alignItems: 'center',
-    justifyContent:'center'
+    backgroundColor:'transparent'
   }
 })
