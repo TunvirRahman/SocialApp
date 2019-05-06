@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text,StyleSheet } from 'react-native';
-import GradientButton from "./Custom Components/GradientButton";
+import CustomButtonWithTitleAndSubTitle from "./Custom Components/CustomButtonWithTitleAndSubTitle";
 
 export default class App extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <View style = {styles.rootView}>
-        <GradientButton title = "LOGIN" colors ={['#FE9244', '#FF5050']}  onPress = {()=>console.log("Ok")}></GradientButton>
+        <CustomButtonWithTitleAndSubTitle title = "Do not have an account?" subTitle = "Sign up now" onPress = {()=>console.log("OK")}></CustomButtonWithTitleAndSubTitle>
       </View>
     );
   }

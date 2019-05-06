@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,TouchableOpacity } from 'react-native';
 
 export default class CustomButtonWithTitleAndSubTitle extends Component {
   constructor(props) {
@@ -9,7 +9,10 @@ export default class CustomButtonWithTitleAndSubTitle extends Component {
   render() {
     return (
       <View>
-        <Text> CustomButtonWithTitleAndSubTitle </Text>
+        <TouchableOpacity style = {{width:'80%',height:60,backgroundColor:'transparent',alignSelf:'center',alignItems:'center',justifyContent:'center'}} onPress = {this.props.onPress}>
+          <Text style = {{fontSize:15,fontWeight:'bold'}}>{this.props.title}</Text>
+          <Text style = {{fontSize:15}}>{this.props.subTitle}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
