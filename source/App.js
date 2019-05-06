@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text,StyleSheet } from 'react-native';
-import CustomButtonWithTitleAndSubTitle from "./Custom Components/CustomButtonWithTitleAndSubTitle";
+import CustomTextInput from "./Custom Components/CustomTextInput";
 
 export default class App extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class App extends Component {
   render() {
     return (
       <View style = {styles.rootView}>
-        <CustomButtonWithTitleAndSubTitle title = "Do not have an account?" subTitle = "Sign up now" onPress = {()=>console.log("OK")}></CustomButtonWithTitleAndSubTitle>
+        <CustomTextInput placeholder = "User Name" secret={false} onTextChange = {(text)=>console.log(text)}></CustomTextInput>
       </View>
     );
   }
